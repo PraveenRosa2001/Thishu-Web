@@ -1,21 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState , useRef} from 'react';
 import './Navbar.css';
 import logo from '../../assets/1.png';
 import cart_icon from '../../assets/shopping-cart.png';
 import { Link } from 'react-router-dom';
 import { HomeContext } from '../../Context/HomeContext';
+import drop_down from '../../assets/dropdown_icon.png';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
 
   const {getTotalCartItems} =useContext(HomeContext);
 
+  const menuRef = useRef();
+
+  const dropdown_toggle = (e) =>{
+    menuRef.current.classList.toggle('nav-menu-visible');
+    e.target.classList.toggle('open');
+  }
+
   return (
     <div className='navbar'>
       <div className='nav-logo'>
         <img src={logo} alt='' className='logo'/>
       </div>
-      <ul className='nav-menu'>
+      <img className="nav-dropdown" onClick={dropdown_toggle} src={drop_down} alt=""/>
+      <ul ref={menuRef} className='nav-menu'>
         <li className={menu === "Home" ? "active" : ""} onClick={() => setMenu("Home")}>
           <Link style={{ textDecoration: 'none' }} to='/'>Home</Link>
           {menu === "Home" && <hr />}
