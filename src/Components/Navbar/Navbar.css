@@ -209,25 +209,6 @@
     }
 
     .nav-login-cart {
-        margin-top: 10px;
-    }
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 3px 0;
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
+        transform: scale(0.8);
     }
 }
